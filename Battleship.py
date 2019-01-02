@@ -27,9 +27,12 @@ ship_col = random_col(board)
 #print ship_row
 #print ship_col
 
+# Ask user how many turns
+turns = int(input("How many turns do you want: "))
+
 # Everything from here on should go in your for loop!
 # Be sure to indent four spaces!
-for turn in range(4):
+for turn in range(turns):
   guess_row = int(input("Guess Row: "))
   guess_col = int(input("Guess Col: "))
 
@@ -40,13 +43,13 @@ for turn in range(4):
     if (guess_row < 0 or guess_row > 4) or (guess_col < 0 or guess_col > 4):
       print ("Oops, that's not even in the ocean.")
     elif(board[guess_row][guess_col] == "X"):
-      print ("You guessed that one already.")
+      print ("You guessed that one already.")      
     else:
       print ("You missed my battleship!")
       board[guess_row][guess_col] = "X"
-      
-    if (turn == 3):
-      print ("Game Over")
-    # Print (turn + 1) here!
-    print ("Turn", turn + 1)
-    print_board(board)
+      if (turn == (turns - 1)):
+        print ("Game Over")
+      else:
+        print ("Turn", turn + 1)
+        print_board(board)
+    
